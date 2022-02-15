@@ -8,11 +8,6 @@
 #include <DNSServer.h>
 #include <ESP8266WebServer.h>
 
-
-//** WiFi settings
-const char ssid[] = "MYSSID";
-const char pass[] = "MYSSIDPASSWD";
-
 //** SoftAP settings
 const IPAddress apIP(192, 168, 1, 1);
 
@@ -23,6 +18,8 @@ class MyWiFiClient {
         DNSServer _dnsServer;
         ESP8266WebServer* webServer;
         const char* apSSID = "ESP8266_SETUP";
+        String ssid = "";
+        String pass = "";
 
     public:
         MyWiFiClient();
@@ -34,6 +31,12 @@ class MyWiFiClient {
         void startCaptivePortal();
         void captivePortalProcessRequest();
         void captivePortalHandleClient();
+        void setSSID(String ssid) {
+          this->ssid = ssid;
+        }
+        void setPass(String pass) {
+          this->pass = pass;
+        }
 };
 
 #endif // WIFI_H

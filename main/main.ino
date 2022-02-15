@@ -26,4 +26,6 @@ void loop() {
     wifi_client->captivePortalProcessRequest();
     wifi_client->captivePortalHandleClient();
   }
+  
+ 
 }

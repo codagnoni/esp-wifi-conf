@@ -9,10 +9,10 @@ void MyWiFiClient::setupWifi() {
 
   Serial.println();
   Serial.print("Connecting to ");
-  Serial.println(ssid);
+  Serial.println(this->ssid);
 
   WiFi.mode(WIFI_STA);
-  WiFi.begin(ssid, pass);
+  WiFi.begin(this->ssid, this->pass);
 
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
@@ -42,7 +42,8 @@ boolean MyWiFiClient::isConfigured() {
     }
     Serial.print("Password: ");
     Serial.println(pass);
-    WiFi.begin(ssid.c_str(), pass.c_str());
+    setSSID(ssid);
+    setPass(pass);
     return true;
   } else {
     Serial.println("Config not found.");
